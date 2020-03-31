@@ -32,7 +32,7 @@ DATABASES = {
 }  
   
 #### 同步数据库  
-python manage.py makemigrations api  
+python manage.py makemigrations api
 python manage.py migrate  
 
 #### 创建管理员账户  

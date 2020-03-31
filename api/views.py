@@ -8,8 +8,8 @@ from api.serializers import UserSerializer, GroupSerializer
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
-from api.models import Snippet
-from api.serializers import SnippetSerializer
+from api.models import Task, Scanput, Scanport, Setting
+from api.serializers import TaskSerializer, ScanputSerializer, ScanportSerializer, SettingSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -34,11 +34,42 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class SnippetList(generics.ListCreateAPIView):
-    queryset = Snippet.objects.all()
-    serializer_class = SnippetSerializer
+#任务示图
+class TaskList(generics.ListCreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
 
 
-class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Snippet.objects.all()
-    serializer_class = SnippetSerializer
+class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+
+#扫描结果
+class ScanputList(generics.ListCreateAPIView):
+    queryset = Scanput.objects.all()
+    serializer_class = ScanputSerializer
+
+
+class ScanputDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Scanput.objects.all()
+    serializer_class = ScanputSerializer
+
+#扫描端口
+class ScanportList(generics.ListCreateAPIView):
+    queryset = Scanport.objects.all()
+    serializer_class = ScanportSerializer
+
+
+class ScanportDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Scanport.objects.all()
+    serializer_class = ScanportSerializer
+
+#设置
+class SettingList(generics.ListCreateAPIView):
+    queryset = Setting.objects.all()
+    serializer_class = SettingSerializer
+
+
+class SettingDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Setting.objects.all()
+    serializer_class = SettingSerializer
